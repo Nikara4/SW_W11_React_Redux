@@ -5,22 +5,12 @@ const NavMenu = () => {
     <nav className="nav">
       <ul className="nav--ul">
         <li>
-          <NavLink
-            className="nav--link"
-            activeClassName="nav--link__active"
-            to="/"
-            exact
-          >
+          <NavLink className="nav--link" to="/" exact="true">
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink
-            className="nav--link"
-            activeClassName="nav--link__active"
-            to="/users"
-            exact
-          >
+          <NavLink className="nav--link" to="/users" exact="true">
             Users list
           </NavLink>
         </li>
