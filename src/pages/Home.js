@@ -13,10 +13,11 @@ const Home = () => {
 
   return (
     <div className="home">
+      <h2 className="home--h2">Strona główna</h2>
+      <p className="home--p">Zadania z tygodnia jedenastego - REDUX (1-4)</p>
       <Button handleClick={buttonLoad}>Load</Button>
       <Button handleClick={buttonReset}>Reset</Button>
       <Button handleClick={buttonAdd}>Add</Button>
-      <p>Hello, why the fuck you not work?</p>
     </div>
   );
 };

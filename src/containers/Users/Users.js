@@ -15,9 +15,10 @@ const Users = () => {
   return (
     <div className="users">
       <h3 className="users--h3">Users list</h3>
-      {hasError && <p className="users--p__loading">An error occurred.</p>}
+      {hasError && <p className="users--p">An error occurred.</p>}
 
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <p className="users--p">Loading...</p>}
+
       <UsersList users={users} />
     </div>
   );

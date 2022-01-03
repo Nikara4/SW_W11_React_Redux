@@ -2,7 +2,7 @@ import { User } from ".";
 
 const UsersList = ({ users }) => {
   return (
-    <div className="users__list">
+    <div className="users--list">
       <ul className="users--ul">
         {users.map((user) => (
           <li key={user.user_id} className="users--li">
