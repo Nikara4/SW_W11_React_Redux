@@ -1,21 +1,22 @@
-import { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
 import { UsersList } from "../../components/UsersList";
-import { fetchUserData } from "../../assets/api";
+import { fetchUsers } from "./redux";
 
-const Users = () => {
-  let [users, setUsers] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  const [hasError, setError] = useState(false);
+const Users = (props) => {
+  const fetchUserData = () => {
+    props.fetchUsers();
+  };
 
-  useEffect(() => {
-    fetchUserData(setUsers, setLoading, setError);
-  }, []);
+  const { users, isLoading, isError } = props;
 
   return (
     <div className="users">
       <h3 className="users--h3">Users list</h3>
-      {hasError && <p className="users--p">An error occurred.</p>}
+      <button className="users--p" onClick={fetchUserData}>
+        hola
+      </button>
+      {isError && <p className="users--p">An error occurred.</p>}
 
       {isLoading && <p className="users--p">Loading...</p>}
 
@@ -24,4 +25,14 @@ const Users = () => {
   );
 };
 
-export default Users;
+const mapStateToProps = (state) => ({
+  users: state.users.users,
+  isLoading: state.users.isLoading,
+  isError: state.users.isError,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchUsers: () => dispatch(fetchUsers()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Users);
