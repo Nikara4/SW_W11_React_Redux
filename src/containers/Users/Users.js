@@ -9,7 +9,7 @@ const Users = (props) => {
   };
 
   const { users, isLoading, isError } = props;
-
+  console.log(users);
   return (
     <div className="users">
       <h3 className="users--h3">Users list</h3>

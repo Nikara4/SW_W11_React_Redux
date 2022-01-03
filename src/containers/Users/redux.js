@@ -23,7 +23,7 @@ export const fetchUsers = () => {
     dispatch(fetchRequested());
     fetch("https://randomuser.me/api/?results=10")
       .then((response) => response.json())
-      .then((data) => dispatch(fetchSucceeded(data)))
+      .then((data) => dispatch(fetchSucceeded(data.results)))
       .catch((error) => dispatch(fetchFailed()));
   };
 };
