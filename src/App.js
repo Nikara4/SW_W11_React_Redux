@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { NavMenu } from "./components/NavMenu";
 import Home from "./pages/Home";
 import { Users } from "./containers";
-import rootReducer from "./rootReducer";
+import rootReducer from "./redux/rootReducer";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
@@ -33,7 +33,6 @@ function App() {
               path="/"
               element={
                 <Home
-                  handleLoadButton={buttonLoad}
                   handleResetButton={buttonReset}
                   handleAddButton={buttonAdd}
                 />
