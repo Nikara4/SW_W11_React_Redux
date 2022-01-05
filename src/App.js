@@ -6,12 +6,14 @@ import store from "./redux/rootReducer";
 import { NavMenu } from "./components/NavMenu";
 import Home from "./containers/Home/Home";
 import { Users } from "./containers";
+import { Snackbar } from "./components/Snackbar";
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
         <NavMenu />
+        <Snackbar message="ty mordo" />
         <Routes>
           <Route exact="true" path="/" element={<Home />} />
           <Route exact="true" path="/users" element={<Users />} />
