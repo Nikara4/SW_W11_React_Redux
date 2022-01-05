@@ -4,11 +4,11 @@ import { UsersList } from "../../components/UsersList";
 import { getUsers, selectUsers } from "../../redux/modules/users";
 
 const Users = (props) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { users, isLoading, isError } = props;
 
   useEffect(() => {
-    !users.length && getUsers();
+    users.length && getUsers();
     setLoading(false);
   }, [users]);
 
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUsers: () => dispatch(getUsers()),
+  getUsers: () => dispatch(getUsers()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users);

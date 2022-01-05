@@ -1,3 +1,5 @@
 export const fetchUsers = (usersCount = 10) => {
-  fetch(`https://randomuser.me/api/?results=${usersCount}`);
+  return fetch(`https://randomuser.me/api/?results=${usersCount}`).then(
+    (response) => response.json()
+  );
 };

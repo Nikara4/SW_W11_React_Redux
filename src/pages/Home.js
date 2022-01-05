@@ -1,17 +1,19 @@
 import { connect } from "react-redux";
 import { getUsers, resetUsers, addOneUser } from "../redux/modules/users";
 
-const handleLoad = () => {
-  getUsers();
-};
-const handleReset = () => {
-  resetUsers();
-};
-const handleAddOneUser = () => {
-  addOneUser();
-};
+const Home = (props) => {
+  const { getUsers, resetUsers, addOneUser } = props;
 
-const Home = () => {
+  const handleLoad = () => {
+    getUsers();
+  };
+  const handleReset = () => {
+    resetUsers();
+  };
+  const handleAddOneUser = () => {
+    addOneUser();
+  };
+
   return (
     <div className="home">
       <h2 className="home--h2">Strona główna</h2>

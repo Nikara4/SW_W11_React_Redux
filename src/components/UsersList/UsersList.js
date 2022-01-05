@@ -7,11 +7,9 @@ const UsersList = ({ users }) => {
         {users.map((user) => (
           <li className="users--li">
             <User
-              key={user.user_id}
+              key={user.id.value}
               img={user.picture.thumbnail}
               fullName={`${user.name.title}. ${user.name.first} ${user.name.last}`}
-              address={`${user.location.city}, ${user.location.country}`}
-              email={user.email}
             />
           </li>
         ))}

@@ -12,14 +12,13 @@ const INITIAL_STATE = {
   isError: false,
 };
 
-// const USERS_RESET = "users/USERS_RESET";
-// const USERS_ADD = "users/USERS_ADD";
-
 const fetchRequested = () => ({ type: FETCH_USERS_REQUESTED });
+
 const fetchSucceeded = (users) => ({
   type: FETCH_USERS_SUCCEEDED,
   payload: users,
 });
+
 const fetchFailed = () => ({ type: FETCH_USERS_FAILED });
 
 const fetchAddOne = (user) => ({ type: FETCH_USERS_ADD_ONE, payload: user });
@@ -28,8 +27,8 @@ const fetchReset = () => ({ type: FETCH_USERS_RESET });
 
 export const getUsers = () => {
   return function (dispatch) {
-    fetchUsers(10)
-      .then((response) => response.json())
+    dispatch(fetchRequested());
+    fetchUsers()
       .then((data) => dispatch(fetchSucceeded(data.results)))
       .catch((error) => dispatch(fetchFailed()));
   };
@@ -45,7 +44,6 @@ export const addOneUser = () => {
   return function (dispatch) {
     dispatch(fetchRequested());
     fetchUsers(1)
-      .then((response) => response.json())
       .then((data) => dispatch(fetchAddOne(data.results)))
       .catch((error) => dispatch(fetchFailed()));
   };
@@ -91,4 +89,4 @@ export default function reducer(state = INITIAL_STATE, action) {
   }
 }
 
-export const selectUsers = (state) => state.users.users || [];
+export const selectUsers = (state) => state.users.users;
