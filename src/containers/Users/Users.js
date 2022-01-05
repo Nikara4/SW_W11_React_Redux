@@ -5,24 +5,20 @@ import { getUsers, selectUsers } from "../../redux/modules/users";
 
 const Users = (props) => {
   const [loading, setLoading] = useState(true);
-  const { users, isLoading, isError } = props;
+  const { users, isLoading, isError, getUsers } = props;
 
   useEffect(() => {
-    users.length && getUsers();
+    !users.length && getUsers();
     setLoading(false);
-  }, [users]);
-
-  console.log(users);
+  }, [users, getUsers]);
 
   return (
     <div className="users">
       <h3 className="users--h3">Users list</h3>
-
       {isError && <p className="users--p">An error occurred.</p>}
-      {isLoading && <p className="users--p">Loading...</p>}
 
       {loading || isLoading ? (
-        <p className="users--p">Ni ma</p>
+        <p className="users--p">Loading...</p>
       ) : (
         <UsersList users={users} />
       )}

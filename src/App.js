@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import store from "./redux/rootReducer";
 import { NavMenu } from "./components/NavMenu";
-import Home from "./pages/Home";
+import Home from "./containers/Home/Home";
 import { Users } from "./containers";
 
 function App() {

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { getUsers, resetUsers, addOneUser } from "../redux/modules/users";
+import { getUsers, resetUsers, addOneUser } from "../../redux/modules/users";
 
 const Home = (props) => {
   const { getUsers, resetUsers, addOneUser } = props;
