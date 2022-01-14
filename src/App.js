@@ -5,19 +5,18 @@ import { Provider } from "react-redux";
 import store from "./redux/rootReducer";
 import { NavMenu } from "./components/NavMenu";
 import Home from "./containers/Home/Home";
-import { Users } from "./containers";
-import { Snackbar } from "./components/Snackbar";
+import { Users, SnackbarWrapper, ContactForm } from "./containers";
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
         <NavMenu />
-        <Snackbar message="ty mordo" />
+        <SnackbarWrapper />
         <Routes>
           <Route exact="true" path="/" element={<Home />} />
           <Route exact="true" path="/users" element={<Users />} />
-          {/* <Route exact="true" path="/message" element={<Message />}></Route> */}
+          <Route exact="true" path="/contact" element={<ContactForm />}></Route>
         </Routes>
       </Router>
     </Provider>

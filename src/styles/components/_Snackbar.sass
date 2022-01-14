@@ -1,10 +1,8 @@
 .snackbar
     display: flex
     justify-content: space-between
-    position: fixed
-    bottom: 3%
-    right: 3%
-    width: 30%
+    margin: 10px 0
+    min-width: 80%
     font-size: 16px
     border: 1px solid #00b894
     border-radius: 7px
@@ -14,8 +12,21 @@
         padding: 10px 20px
     &--button
         line-height: 20px
-        font-size: 1.2rem
+        font-size: 1.3rem
         background-color: transparent
         border: none
         cursor: pointer
         padding: 0 20px
+        color: white
+    &--info
+        background-color: blue
+    &--success
+        background-color: green
+    &--error
+        background-color: red
+        color: white
+    &--wrapper
+        position: absolute
+        right: 3%
+        bottom: 3%
+        width: 25%

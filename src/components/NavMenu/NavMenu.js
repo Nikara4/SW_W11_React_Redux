@@ -14,6 +14,11 @@ const NavMenu = () => {
             Users list
           </NavLink>
         </li>
+        <li>
+          <NavLink className="nav--link" to="/contact" exact="true">
+            Contact form
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

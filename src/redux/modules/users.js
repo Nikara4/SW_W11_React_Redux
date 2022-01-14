@@ -1,4 +1,5 @@
-import { fetchUsers } from "../../assets/api";
+import { fetchUsers } from "../../assets/users";
+import { addSnackbar } from "./snackbar";
 
 const FETCH_USERS_REQUESTED = "users/FETCH_USERS_REQUESTED";
 const FETCH_USERS_SUCCEEDED = "users/FETCH_USERS_SUCCEEDED";
@@ -28,24 +29,74 @@ const fetchReset = () => ({ type: FETCH_USERS_RESET });
 export const getUsers = () => {
   return function (dispatch) {
     dispatch(fetchRequested());
+    dispatch(
+      addSnackbar({
+        message: "Users requested from server",
+        severity: "info",
+      })
+    );
     fetchUsers()
-      .then((data) => dispatch(fetchSucceeded(data.results)))
-      .catch((error) => dispatch(fetchFailed()));
+      .then((data) => {
+        dispatch(fetchSucceeded(data.results));
+        dispatch(
+          addSnackbar({
+            message: "Users successfully loaded",
+            severity: "success",
+          })
+        );
+      })
+      .catch((error) => {
+        dispatch(fetchFailed());
+        dispatch(
+          addSnackbar({
+            message: "Users fetch failed",
+            severity: "error",
+          })
+        );
+      });
   };
 };
 
 export const resetUsers = () => {
   return function (dispatch) {
     dispatch(fetchReset());
+    dispatch(
+      addSnackbar({
+        message: "Users link reset",
+        severity: "success",
+      })
+    );
   };
 };
 
 export const addOneUser = () => {
   return function (dispatch) {
     dispatch(fetchRequested());
+    dispatch(
+      addSnackbar({
+        message: "Additional user requested from server",
+        severity: "info",
+      })
+    );
     fetchUsers(1)
-      .then((data) => dispatch(fetchAddOne(data.results)))
-      .catch((error) => dispatch(fetchFailed()));
+      .then((data) => {
+        dispatch(fetchAddOne(data.results));
+        dispatch(
+          addSnackbar({
+            message: "Additional user successfully added to the list",
+            severity: "success",
+          })
+        );
+      })
+      .catch((error) => {
+        dispatch(fetchFailed());
+        dispatch(
+          addSnackbar({
+            message: "Additional user fetch failed",
+            severity: "error",
+          })
+        );
+      });
   };
 };
 
